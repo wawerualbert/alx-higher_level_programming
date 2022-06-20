@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-def safe_print_integer(value):
+import sys
+def safe_function(fct, *args):
     """
-    A function that prints an integer with
-    "{:d}".format()
+    A function that executes a function safely
     """
     try:
-        print("{:d}".format(value))
-        return True
-    except (TypeError, ValueError):
-        return False
+        result = fct(*args)
+        return (result)
+    except:
+        print("Exception: {}".format(sys.exc_info()[1]), file=sys.stderr)
+        return (None)
